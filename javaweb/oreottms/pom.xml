@@ -17,10 +17,10 @@
 
 	<!--加入子模块-->
 	<modules>
-		<module>panda-admin</module>
-		<module>panda-common</module>
-		<module>panda-system</module>
-		<module>panda-framework</module>
+		<module>oreo-admin</module>
+		<module>oreo-common</module>
+		<module>oreo-system</module>
+		<module>oreo-framework</module>
 	</modules>
 
 	<properties>
@@ -118,8 +118,8 @@
 
 			<dependency>
 				<groupId>com.panda</groupId>
-				<artifactId>panda-admin</artifactId>
-				<version>${panda.version}</version>
+				<artifactId>oreo-admin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 
 		</dependencies>

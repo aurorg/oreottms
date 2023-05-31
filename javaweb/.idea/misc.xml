@@ -4,6 +4,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/CinemaBookingSystem-master/pom.xml" />
+        <option value="$PROJECT_DIR$/oreottms/pom.xml" />
+        <option value="$PROJECT_DIR$/oreottms/oreo-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/oreottms/oreo-common/pom.xml" />
+        <option value="$PROJECT_DIR$/oreottms/oreo-framework/pom.xml" />
+        <option value="$PROJECT_DIR$/oreottms/oreo-system/pom.xml" />
       </list>
     </option>
   </component>
