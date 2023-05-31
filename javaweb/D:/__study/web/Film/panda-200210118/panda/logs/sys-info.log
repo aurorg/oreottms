@@ -233,3 +233,7 @@
 08:07:57.228 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8181"]
 08:07:57.243 [restartedMain] INFO  o.q.c.QuartzScheduler - [start,547] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
 08:07:57.250 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarted,61] - Started PandaAdminApplication in 2.122 seconds (JVM running for 2.691)
+08:11:37.457 [http-nio-8181-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+08:13:28.493 [http-nio-8181-exec-5] INFO  c.p.c.utils.JwtUtil - [verify,38] - 登录验证成功!
+08:13:29.451 [http-nio-8181-exec-9] INFO  c.p.c.utils.JwtUtil - [verify,38] - 登录验证成功!
+08:13:29.451 [http-nio-8181-exec-8] INFO  c.p.c.utils.JwtUtil - [verify,38] - 登录验证成功!
