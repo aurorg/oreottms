@@ -1,10 +1,12 @@
 package com.panda.system.mapper;
 
 import com.panda.system.domin.SysBill;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 
+@Mapper
 public interface SysBillMapper {
 
     List<SysBill> findAllBills(SysBill sysBill);

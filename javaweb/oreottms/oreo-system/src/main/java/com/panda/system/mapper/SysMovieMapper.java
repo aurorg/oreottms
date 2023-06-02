@@ -2,10 +2,11 @@ package com.panda.system.mapper;
 
 import com.panda.system.domin.SysMovie;
 import com.panda.system.domin.vo.SysMovieVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-
+@Mapper
 public interface SysMovieMapper {
 
     /**

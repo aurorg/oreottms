@@ -3,10 +3,11 @@ package com.panda.system.mapper;
 import com.panda.system.domin.LoginUser;
 import com.panda.system.domin.SysUser;
 import com.panda.system.domin.vo.SysUserVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-
+@Mapper
 public interface SysUserMapper {
     List<SysUser> findAllUsers(SysUser sysUser);
 

@@ -2,10 +2,11 @@ package com.panda.system.mapper;
 
 import com.panda.system.domin.SysSession;
 import com.panda.system.domin.vo.SysSessionVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-
+@Mapper
 public interface SysSessionMapper {
 
     /**

@@ -1,7 +1,9 @@
 package com.panda.system.mapper;
 
 import com.panda.system.domin.SysCinema;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface SysCinemaMapper {
 
     SysCinema findCinema();
