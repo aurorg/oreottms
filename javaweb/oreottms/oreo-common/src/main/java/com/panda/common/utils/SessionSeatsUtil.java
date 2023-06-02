@@ -8,8 +8,8 @@ import java.util.Map;
 
 /**
  * @description:
- * @author: chengho
- * @create: 2021-06-02 15:59
+ * @author: aurora
+ * @create: 2023-06-02 15:59
  */
 public class SessionSeatsUtil {
     /**

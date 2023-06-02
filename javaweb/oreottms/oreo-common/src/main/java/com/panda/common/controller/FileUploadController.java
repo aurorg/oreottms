@@ -16,6 +16,24 @@ import java.io.IOException;
 /**
  * 封装图片上传请求
  */
+
+/*
+文件上传控制器FileUploadController，上传和删除文件的方法。
+
+uploadUser()、uploadMovie()、uploadCinema()、uploadActor()方法：
+分别用于上传用户头像、电影海报、影院图片和演员头像。
+通过调用FileUploadUtils中的upload()方法来实现文件上传，并将上传后的文件名返回给前端。
+
+deletePicture()方法：用于删除文件。
+它接收一个filePath参数，指定要删除的文件路径。
+在方法中，首先使用ResourceUtils.getURL()方法获取文件的绝对路径，
+然后调用FileUploadUtils中的deleteFile()方法来实现文件删除。
+
+@RequestParam和@PathVariable注解：用于接收前端传递的参数。
+@RequestParam注解用于接收请求参数，例如上传的文件；
+@PathVariable注解用于接收请求路径中的参数，例如删除文件的路径。
+
+ */
 @Slf4j
 @RestController
 @RequestMapping("/upload")
