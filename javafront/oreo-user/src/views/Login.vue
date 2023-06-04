@@ -18,8 +18,8 @@
         </el-form-item>
         <!-- 按扭区域 -->
         <el-form-item class="btns">
-          <el-button size="medium" :round="true" type="primary" @click="login">点击登录</el-button>
-          <el-button size="medium" :round="true" type="warning" @click="registerAccount">注册帐号</el-button>
+          <el-button size="medium" class="btn" :round="true" type="primary" @click="login">点击登录</el-button>
+          <el-button size="medium" class="btn" :round="true" type="warning" @click="registerAccount">注册帐号</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -34,7 +34,7 @@ export default {
     return {
       // 登录表单数据对象
       loginForm:{
-        userName : 'admin',
+        userName : 'zouge',
         password : '123456'
       },
       // 登录表单验证规则
@@ -96,11 +96,10 @@ export default {
   background-size: cover;
   height: 100%;
 }
-
 .login_box{
   width: 450px;
   height: 300px;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 3px;
   position: absolute;
   left: 50%;
@@ -118,7 +117,6 @@ export default {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
 }
 
 .avatar_box > img{
@@ -144,5 +142,13 @@ export default {
 .btns{
   display: flex;
   justify-content: center;
+}
+.btn {
+  background-color: #000;
+  border-color: #000;
+}
+.btn:hover {
+  background-color: #666;
+  border-color: #000;
 }
 </style>

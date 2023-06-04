@@ -18,8 +18,8 @@
         </el-form-item>
         <!-- 按扭区域 -->
         <el-form-item class="btns">
-          <el-button size="medium" :round="true" type="primary" @click="login">点击登录</el-button>
-          <el-button size="medium" :round="true" type="info" @click="resetLoginForm">恢复默认</el-button>
+          <el-button size="medium" class="btn" :round="true" type="primary" @click="login">点击登录</el-button>
+          <el-button size="medium" class="btn" :round="true" type="info" @click="resetLoginForm">恢复默认</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -90,13 +90,14 @@ export default {
 <style scoped>
 .login_container{
   background-image: url("../assets/login-background.jpg");
+  background-size: cover;
   height: 100%;
 }
 
 .login_box{
   width: 450px;
   height: 300px;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 3px;
   position: absolute;
   left: 50%;
@@ -140,5 +141,13 @@ export default {
 .btns{
   display: flex;
   justify-content: center;
+}
+.btn {
+  background-color: #000;
+  border-color: #000;
+}
+.btn:hover {
+  background-color: #666;
+  border-color: #000;
 }
 </style>
