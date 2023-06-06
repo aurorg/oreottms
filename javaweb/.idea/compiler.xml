@@ -34,7 +34,7 @@
       <module name="oreo-common" options="-parameters" />
       <module name="oreo-framework" options="-parameters" />
       <module name="oreo-system" options="-parameters" />
-      <module name="panda" options="-parameters" />
+      <module name="panda" options="" />
       <module name="panda-common" options="-parameters" />
       <module name="panda-framework" options="-parameters" />
       <module name="panda-system" options="-parameters" />
