@@ -17,6 +17,8 @@ import java.util.Map;
 
 /**
  * 配置shiro安全框架
+ * 返回一个Shiro框架中的ShiroFilterFactoryBean对象，
+ * 用于配置Shiro框架的过滤器链。
  */
 @Configuration
 public class ShiroConfig {
@@ -27,9 +29,19 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
         // 给shiroFilter设置安全管理器
+        /*
+        ShiroFilterFactoryBean对象。
+        使用setSecurityManager方法将默认的Web安全管理器设置为参数defaultWebSecurityManager
+         */
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
 
         // 配置受限资源
+        /*
+        使用LinkedHashMap对象创建了一个map，
+        用于配置受限资源及其对应的访问规则。
+        使用"anon"表示该资源无需认证即可访问，
+        使用"jwt"表示该资源需要认证和授权才能访问。
+         */
         Map<String, String> map = new LinkedHashMap<>();
         // 放行注册和登录
         map.put("/sysUser/register", "anon");
@@ -58,6 +70,24 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }
+
+    /*
+    返回一个Shiro框架中的DefaultWebSecurityManager对象，
+    用于配置Shiro框架的安全管理器。
+
+首先创建了一个DefaultWebSecurityManager对象。
+使用setRealm方法将参数realm设置为该安全管理器的Realm。
+
+接着，使用DefaultSubjectDAO对象和DefaultSessionStorageEvaluator对象关闭了Shiro框架自带的session存储机制，
+使得Shiro框架不再保存登录状态，而是每次使用token进行验证。具体的步骤是：
+
+创建一个DefaultSubjectDAO对象。
+创建一个DefaultSessionStorageEvaluator对象，
+并使用setSessionStorageEnabled(false)方法关闭session存储。
+使用setSessionStorageEvaluator方法将DefaultSessionStorageEvaluator对象设置到DefaultSubjectDAO对象中。
+使用setSubjectDAO方法将DefaultSubjectDAO对象设置到DefaultWebSecurityManager对象中。
+最后，返回配置好的DefaultWebSecurityManager对象。
+     */
 
     //创建安全管理器
     @Bean
