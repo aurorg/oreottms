@@ -28,7 +28,7 @@
       <div class="movie-info-detail clearfix">
         <div class="main-content">
           <div class="crumbs-nav-container">
-            <a href="/welcome">oreo电影</a> &gt; <a href="/aboutUs"> {{cinemaInfo.cinemaName}}</a>
+            <a href="/welcome">panda电影</a> &gt; <a href="/aboutUs"> {{cinemaInfo.cinemaName}}</a>
           </div>
           <!-- 影院正在上映的所有电影 -->
           <div class="movie-list-container"

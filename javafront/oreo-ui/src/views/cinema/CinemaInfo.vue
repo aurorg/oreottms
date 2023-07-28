@@ -3,6 +3,7 @@
     <!--面包屑导航区域-->
     <div class="board">
       <el-breadcrumb separator-class="el-icon-arrow-right">
+        <!--to 属性指定了点击该面包屑项后跳转的路径为 /welcome-->
         <el-breadcrumb-item :to="{ path: '/welcome' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>影院管理</el-breadcrumb-item>
         <el-breadcrumb-item>影院信息管理</el-breadcrumb-item>
@@ -14,6 +15,7 @@
       <!--表格显示影院信息-->
       <el-form :model="cinemaInfo" label-width="150px">
         <el-form-item label="影院名称: " prop="cinemaName">
+          <!--双向数据绑定 输入框的值与组件内部变量绑定，实现数据的同步更新；disabled：禁用输入框，使其无法编辑 -->
           <el-input class="el-input-show" v-model="cinemaInfo.cinemaName" disabled></el-input>
         </el-form-item>
         <el-form-item label="影院地址: " prop="cinemaAddress">
@@ -27,10 +29,12 @@
           至
           <el-input class="el-input-show-time" v-model="cinemaInfo.workEndTime" disabled></el-input>
         </el-form-item>
+        <!--用于遍历`halls`数组，将每个元素渲染为一个`el-tag`标签，显示该影院拥有的每种影厅类型-->
         <el-form-item label="拥有影厅类型: " prop="hallCategory">
           <el-tag v-for="hall in halls" >{{hall}}</el-tag>
         </el-form-item>
         <el-form-item label="影院图片: ">
+          <!--使用 v-for 指令遍历 pics 数组，为每个图片创建一个 el-popover 弹出框，当用户点击图片时，会弹出该图片的大图-->
           <span v-for="item in pics">
             <el-popover placement="left" trigger="click" width="300">
               <img :src="item.url" width="200%"/>
@@ -75,6 +79,7 @@
           <el-input class="el-input-hall" placeholder="请输入添加影厅类别名称" v-model="inputHall" clearable></el-input>
           <el-button type="primary" @click="addHallCategory()">添加</el-button>
         </el-form-item>
+        <!--在表单中展示标签列表 closable属性指定标签是否可关闭，`@close` 事件用于在标签被关闭时触发 `deleteHallCategory` 方法，从而删除对应的标签 -->
         <el-form-item >
           <el-tag
             v-for="(item, index) in halls"
@@ -84,7 +89,8 @@
             {{item}}
           </el-tag>
         </el-form-item>
-
+        <!--上传组件 el-upload，用于上传图片，action 属性为空，表示上传地址需要在后端动态生成；on-change 属性绑定一个方法 handleChange，
+        用于在文件列表发生改变时触发-->
         <el-form-item label="影院图片">
           <el-upload action="" list-type="picture-card"
                      :auto-upload="false"
@@ -94,6 +100,7 @@
                      :on-error="handleError"
                      ref="pictureEditRef"
                      :http-request="submitFile">
+            <!--插槽 slot 来自定义上传按钮的样式  预览、删除-->
             <i slot="default" class="el-icon-plus"></i>
             <div slot="file" slot-scope="{file}">
               <img class="el-upload-list__item-thumbnail"
@@ -195,15 +202,18 @@
         this.halls = []
         this.getCinemaInfo()
       },
-      // 取消修改
+      // 取消修改 取消编辑对话框并清空删除图片列表
       cancelEdit() {
         this.editDialogVisible = false
         this.deletePicList.splice(0, this.deletePicList.length)
       },
       async editCinemaInfo() {
+        //上传影院图片
         await this.submitFile()
+        //将pictureList和halls转换为JSON字符串，用于提交给后端
         this.editForm.cinemaPicture = JSON.stringify(this.pictureList)
         this.editForm.hallCategoryList = JSON.stringify(this.halls)
+        //表单验证 如果验证不通过则直接返回，验证通过，则使用axios发送PUT请求，将编辑后的影院信息提交给后端
         this.$refs.editFormRef.validate(async valid => {
           const _this = this
           if (!valid) return
@@ -215,6 +225,7 @@
               success = false
             }
           })
+          //修改成功，则关闭编辑对话框，重新获取影院信息，并提示修改成功；使用axios发送GET请求，删除已经删除的影院图片
           if (!success) return
           this.editDialogVisible = false
           await this.getCinemaInfo()
@@ -224,12 +235,15 @@
           }
         })
       },
+      /*首先判断输入的影厅类别是否为空，如果为空则弹出提示框并返回。如果不为空，则判断该影厅类别是否已经存在于数组halls中，
+      如果不存在，则将其添加到数组halls中。如果已经存在，则弹出提示框并返回。最后将输入框清空*/
       addHallCategory() {
         if (this.inputHall === '' || this.inputHall === null) {
           this.$alert('影厅类别添加失败！原因：所添加的影厅类别不能为空。', '影厅类别添加异常', {
             confirmButtonText: '我知道了'
           })
           return
+        //  判断该影厅类别是否已经存在于数组halls中，如果不存在，则将其添加到数组halls中
         } else if (!this.halls.includes(this.inputHall)) {
           this.halls.push(this.inputHall)
         } else {
@@ -240,6 +254,7 @@
         }
         this.inputHall = ''
       },
+      //删除对应的标签
       deleteHallCategory(index) {
         this.halls.splice(index, 1)
         console.log(this.halls)
@@ -267,6 +282,7 @@
       handleError(err){
         console.log(err)
       },
+      //上传文件
       async submitFile() {
         const _this = this
         for (let i = 0; i < this.pics.length; i++){
@@ -276,11 +292,14 @@
             this.pictureList.push(s.substring(s.indexOf('/images')))
             continue
           }
+          //如果该元素的状态不为'success'，则创建一个FormData对象，并将该元素的原始文件(raw)添加到FormData中
           let file = this.pics[i].raw
           formData.append('file', file)
+          //使用axios库发送一个POST请求，将FormData对象作为请求体，请求的URL为'upload/cinema'，如果请求成功，将响应数据中的data字段添加到pictureList数组中
           await axios.post('upload/cinema', formData).then(response =>{
             _this.pictureList.push(response.data.data)
           })
+          //await关键字，表示在等待axios.post()函数返回结果之前，该函数会暂停执行
         }
       }
     }

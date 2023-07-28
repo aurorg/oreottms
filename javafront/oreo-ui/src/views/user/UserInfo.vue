@@ -90,6 +90,7 @@
         <el-form-item label="手机号码" prop="phoneNumber">
           <el-input v-model="addForm.phoneNumber"></el-input>
         </el-form-item>
+        <!--通过 v-for 循环渲染了 gender 数组中的每一项，设置了每一项的 label 和 value 属性，其中 label 是显示在选择框中的文本，value 是对应的值-->
         <el-form-item label="性别" prop="sex">
           <el-select v-model="addForm.sex" placeholder="请选择性别" clearable >
             <el-option
@@ -122,6 +123,7 @@
                      :on-exceed="handleExceed"
                      ref="pictureRef"
                      :http-request="submitFile">
+            <!--插槽 slot 来自定义上传按钮的样式  预览、删除-->
             <i slot="default" class="el-icon-plus"></i>
             <div slot="file" slot-scope="{file}">
               <img class="el-upload-list__item-thumbnail" :src="file.url" alt="">
@@ -226,6 +228,7 @@
 import global from "../../assets/css/global.css"
 export default {
   data() {
+    //使用正则表达式来校验邮箱格式是否正确,如果校验通过，则调用`cb()`返回校验结果,否则，调用`cb(new Error('请输入合法的邮箱'))`返回错误信息
     let checkEmail = (rule, value, cb) => {
       const regEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/
       if (regEmail.test(value)){
@@ -233,6 +236,7 @@ export default {
       }
       cb(new Error('请输入合法的邮箱'))
     }
+    //检查手机号
     let checkMobile = (rule, value, cb) => {
       const regMobile = /^(0|86|17951)?(13[0-9]|15[0123456789]|17[678]|18[0-9]|14[57])[0-9]{8}$/
       if (regMobile.test(value)){
@@ -365,6 +369,7 @@ export default {
       this.getUserList()
       console.log(newPage)
     },
+    //显示一个弹出框
     showAddDialog(){
       this.addDialogVisible = true
     },
@@ -402,6 +407,10 @@ export default {
       })
     },
     // 显示修改对话框，回显数据
+    /*
+    数据被存储在editForm对象中。接下来，代码会遍历editForm对象中的userPicture属性，该属性是一个JSON字符串，其中包含了用户上传的图片的URL地址。
+    对于每个URL地址，代码会创建一个新的图片对象pic，将其名称设置为空字符串，将其URL设置为全局变量global.base加上URL地址。最后，将新创建的图片对象pic添加到pics数组中
+     */
     async showEditDialog(id){
       const _this = this
       await axios.get('sysUser/' + id).then(resp => {

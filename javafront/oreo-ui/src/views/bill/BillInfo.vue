@@ -51,6 +51,7 @@
         </el-table-column>
         <el-table-column prop="seats" label="座位"></el-table-column>
         <el-table-column prop="createTime" label="订票时间"></el-table-column>
+        <!--根据 payState 的值，分别显示已完成、未支付、超时取消和用户取消等不同的状态，并设置不同的颜色-->
         <el-table-column prop="payState" label="订单状态" width="80">
           <template slot-scope="scope">
             <span v-if="scope.row.payState === true" style="color: #13ce66">已完成</span>
@@ -72,7 +73,7 @@
         </el-table-column>
       </el-table>
 
-      <!--分页区域-->
+      <!--分页区域 每页显示条数改变时触发的事件、页码改变时触发的事件、-->
       <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -86,7 +87,7 @@
 
 
 
-    <!--修改影厅对话框-->
+    <!--修改影厅对话框  disabled：禁用输入框，使其无法编辑-->
     <el-dialog title="修改订单" :visible.sync="editDialogVisible" width="60%" @close="editDialogClosed">
       <el-form :model="editForm" ref="editFormRef" label-width="100px">
         <!--prop：在addFormRules中定义校验规则， v-model：双向绑定数据-->
@@ -138,6 +139,7 @@
           </el-select>
         </el-form-item>
       </el-form>
+      <!--点击取消按钮时，将 editDialogVisible 变量设置为 false，从而关闭对话框-->
       <span slot="footer" class="dialog-footer">
         <el-button @click="editDialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="editBillInfo">确 定</el-button>
@@ -203,8 +205,9 @@ export default {
     this.getBillList()
   },
   methods: {
+    //获取订单列表 首先将查询条件赋值给q后ueryInfo对象的属性，使用axios库发送GET请求到后端的sysBill接口，并将queryInfo作为参数传递
+    //请求成功后，将返回的数据赋值给billList、total、queryInfo等属性，以便在前端页面中展示
     async getBillList() {
-      // this.userName = this.inputUserName
       this.queryInfo.payState = this.selectedState
       this.queryInfo.createTime = this.selectedDate
       console.log('quaryInfo'+this.inputUserName)
@@ -234,7 +237,7 @@ export default {
     handleSelectionChange(val){
       this.multipleSelection = val
     },
-    // 显示修改对话框，回显数据
+    // 显示修改对话框，回显数据 接受一个参数id，表示要编辑的订单的id，发送GET请求获取订单数据，并将其存储在组件的editForm
     async showEditDialog(id) {
       let isAbleEdit = true
       await axios.get('sysBill/' + id ).then(resp => {
@@ -265,6 +268,8 @@ export default {
       this.$refs.editFormRef.resetFields()
     },
     // 修改影厅分类信息并提交
+    /*定义了一个常量 `_this`，指向当前的 Vue 实例，以便在后面的代码中使用。然后，
+    它检查编辑表单中的 `cancelState` 和 `payState` 是否同时为真，如果是，则弹出一个警告框，提示用户修改失败，并返回到订单页面。最后，它关闭编辑对话框，结束函数的执行*/
     async editBillInfo() {
       const _this = this
       if (_this.editForm.cancelState && _this.editForm.payState) {
@@ -277,6 +282,7 @@ export default {
         this.editDialogVisible = false
         return
       }
+      //如果支付状态为真，则发送 PUT 请求更新订单信息，如果返回的状态码不为 200，则提示支付失败，否则提示支付成功，并关闭编辑对话框，重新获取订单列表
       if (_this.editForm.payState) {
         const { data: res} = await axios.put('sysBill', JSON.stringify(_this.editForm))
         if(res.code !== 200) return this.$message.error('支付失败')
@@ -284,7 +290,9 @@ export default {
         this.editDialogVisible = false
         this.getBillList()
         return
-      } else if (_this.editForm.cancelState) {
+      } else if (_this.editForm.cancelState)
+      //如果取消状态为真，则更新订单信息和场次座位信息。首先获取当前场次的座位信息，然后解析出订单选择的座位，将对应的座位状态更新为 0
+      {
         _this.editForm.cancelState = true
         _this.editForm.cancelTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
         // 获取场次座位信息
@@ -296,7 +304,8 @@ export default {
           let col = Number.parseInt(seat.substring(seat.indexOf('排') + 1, seat.length - 1))
           sessionSeats[row][col - 1] = 0
         }
-        // 更新订单信息和场次座位信息
+        //更新订单信息和场次座位信息
+        //最后发送 PUT 请求更新订单信息和场次座位信息，如果返回的状态码不为 200，则提示取消失败，否则重新获取订单列表，并提示取消成功
         axios.defaults.headers.put['Content-Type'] = 'application/json'
         const { data: resp } = await axios.put('sysBill/cancel',JSON.stringify({sysBill: _this.editForm, sessionSeats: JSON.stringify(sessionSeats)}))
         if(resp.code !== 200) return this.$message.error('取消失败')
@@ -320,7 +329,7 @@ export default {
       if (resp === 'cancel'){
         return _this.$message.info('已取消删除')
       }
-
+      //如果用户确认删除，则会获取选中的数据的ID，通过axios发送一个DELETE请求来删除这些数据
       let ids = []
       this.multipleSelection.forEach(data => {
         ids.push(data.billId)
@@ -349,7 +358,7 @@ export default {
       if (resp === 'cancel'){
         return _this.$message.info('已取消删除')
       }
-
+      //用户确认删除，则通过axios.delete方法发送请求删除订单 删除成功则调用this.getBillList方法重新获取订单列表并提示删除成功
       await axios.delete('sysBill/' + id).then(resp => {
         if (resp.data.code !== 200){
           _this.$message.success('删除订单失败！')

@@ -158,6 +158,8 @@
         <span class="seat" :class="isSelected[1]"></span>
       </div>
       <br/>
+      <!--遍历了一个名为`seats`的对象，将每个键值对的值赋值给`value`，将每个键值对的键赋值给`key`-->
+      <!--根据`isSelected`对象中与当前座位状态对应的值来判断是否添加`seat-selected`类-->
       <div class="row" v-for="(value, key) in seats">
         <span style="margin-right: 100px">{{key}}</span>
         <div style="display: flex; justify-content: flex-end">
@@ -493,6 +495,9 @@ export default {
       this.getHallList()
       this.$message.success('删除影厅信息成功！')
     },
+    /*定义了一个常量`_this`，它指向当前的Vue实例；使用`axios`库发送一个GET请求，请求的URL为`sysHall/`加上`id`参数
+      请求成功后，将返回的数据中的`data`属性赋值给`_this.editSeat`，并将`_this.editSeat.seatState`解析为JavaScript对象，并赋值给`_this.seats`
+      根据`_this.editSeat.seatNumsRow`计算出弹窗的宽度，并将弹窗的可见性设置为`true`*/
     async arrangeSeat(id){
       const _this = this
       await axios.get('sysHall/' + id).then(resp => {
@@ -504,10 +509,16 @@ export default {
       this.arrangeDialogWidth = 200 + this.editSeat.seatNumsRow * 40 + 'px'
       this.arrangeDialogVisible = true
     },
+    /*使用Vue.js提供的`$set`方法，将`this.seats[key][idx]`的值修改为相反的状态，即如果该座位未被选中，则将其状态修改为已被选中；
+      如果该座位已被选中，则将其状态修改为未被选中。*/
     pressSeat(key, idx){
       console.log( typeof this.seats[key][idx])
       this.$set(this.seats[key], idx, (this.seats[key][idx] === 0 ? 1 : 0))
     },
+
+    /*它首先将`this.seats`对象转换为JSON字符串，并将其赋值给`editSeat`对象的`seatState`属性。
+    然后，它使用两个嵌套的`for`循环遍历`this.seats`对象中的所有元素，如果某个元素的值为0（表示该座位可用），则将`totalSeats`变量加1。
+    最后，它打印出`editSeat`对象，以便调试和验证*/
     async saveSeat(){
       this.editSeat.seatState = JSON.stringify(this.seats)
       console.log(this.editSeat)

@@ -1,21 +1,26 @@
-14:38:26.089 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
-14:38:26.093 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarting,55] - Starting PandaAdminApplication using Java 11.0.19 on szl with PID 9793 (/home/shizhanli/oreottms/javaweb/oreottms/oreo-admin/target/classes started by shizhanli in /home/shizhanli/oreottms/javaweb)
-14:38:26.094 [restartedMain] INFO  c.p.PandaAdminApplication - [logStartupProfileInfo,664] - The following profiles are active: druid
-14:38:26.818 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
-14:38:27.141 [restartedMain] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1} inited
-14:38:27.520 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8181"]
-14:38:27.521 [restartedMain] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-14:38:27.521 [restartedMain] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.39]
-14:38:27.522 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - Loaded Apache Tomcat Native library [1.2.23] using APR version [1.6.5].
-14:38:27.523 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-14:38:27.523 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-14:38:27.524 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - OpenSSL successfully initialized [OpenSSL 1.1.1f  31 Mar 2020]
-14:38:27.553 [restartedMain] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-14:38:28.094 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1220] - Using default implementation for ThreadExecutor
-14:38:28.100 [restartedMain] INFO  o.q.c.SchedulerSignalerImpl - [<init>,61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-14:38:28.100 [restartedMain] INFO  o.q.c.QuartzScheduler - [<init>,229] - Quartz Scheduler v.2.3.2 created.
-14:38:28.101 [restartedMain] INFO  o.q.s.RAMJobStore - [initialize,155] - RAMJobStore initialized.
-14:38:28.101 [restartedMain] INFO  o.q.c.QuartzScheduler - [initialize,294] - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+19:50:11.163 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+19:50:11.164 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarting,55] - Starting PandaAdminApplication using Java 11.0.19 on szl with PID 68657 (/home/shizhanli/下载/oreottms-master/javaweb/CinemaBookingSystem-master/panda-admin/target/classes started by shizhanli in /home/shizhanli/下载/oreottms-master/javaweb)
+19:50:11.165 [restartedMain] INFO  c.p.PandaAdminApplication - [logStartupProfileInfo,664] - The following profiles are active: druid
+19:50:11.869 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+19:50:12.113 [restartedMain] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1} inited
+19:50:56.784 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+19:50:56.789 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarting,55] - Starting PandaAdminApplication using Java 11.0.19 on szl with PID 68814 (/home/shizhanli/下载/oreottms-master/javaweb/CinemaBookingSystem-master/panda-admin/target/classes started by shizhanli in /home/shizhanli/下载/oreottms-master/javaweb)
+19:50:56.790 [restartedMain] INFO  c.p.PandaAdminApplication - [logStartupProfileInfo,664] - The following profiles are active: druid
+19:50:57.473 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+19:50:57.734 [restartedMain] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1} inited
+19:50:58.069 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8181"]
+19:50:58.069 [restartedMain] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+19:50:58.070 [restartedMain] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.39]
+19:50:58.071 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - Loaded Apache Tomcat Native library [1.2.23] using APR version [1.6.5].
+19:50:58.071 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+19:50:58.071 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+19:50:58.073 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - OpenSSL successfully initialized [OpenSSL 1.1.1f  31 Mar 2020]
+19:50:58.106 [restartedMain] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+19:50:58.590 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1220] - Using default implementation for ThreadExecutor
+19:50:58.595 [restartedMain] INFO  o.q.c.SchedulerSignalerImpl - [<init>,61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+19:50:58.595 [restartedMain] INFO  o.q.c.QuartzScheduler - [<init>,229] - Quartz Scheduler v.2.3.2 created.
+19:50:58.595 [restartedMain] INFO  o.q.s.RAMJobStore - [initialize,155] - RAMJobStore initialized.
+19:50:58.596 [restartedMain] INFO  o.q.c.QuartzScheduler - [initialize,294] - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -23,15 +28,46 @@
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-14:38:28.102 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1374] - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-14:38:28.102 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1378] - Quartz scheduler version: 2.3.2
-14:38:28.102 [restartedMain] INFO  o.q.c.QuartzScheduler - [setJobFactory,2293] - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@17ba2e59
-14:38:28.164 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8181"]
-14:38:28.176 [restartedMain] INFO  o.q.c.QuartzScheduler - [start,547] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
-14:38:28.186 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarted,61] - Started PandaAdminApplication in 2.456 seconds (JVM running for 3.02)
-14:52:31.246 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [standby,585] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-14:52:31.306 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [shutdown,666] - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
-14:52:31.306 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [standby,585] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-14:52:31.307 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [shutdown,740] - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
-14:52:31.310 [SpringContextShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2032] - {dataSource-1} closing ...
-14:52:31.316 [SpringContextShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2104] - {dataSource-1} closed
+19:50:58.596 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1374] - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+19:50:58.597 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1378] - Quartz scheduler version: 2.3.2
+19:50:58.597 [restartedMain] INFO  o.q.c.QuartzScheduler - [setJobFactory,2293] - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5362da2
+19:50:58.644 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8181"]
+19:50:58.654 [restartedMain] INFO  o.q.c.QuartzScheduler - [start,547] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+19:50:58.662 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarted,61] - Started PandaAdminApplication in 2.187 seconds (JVM running for 2.666)
+19:51:15.472 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [standby,585] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+19:51:15.530 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [shutdown,666] - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+19:51:15.531 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [standby,585] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+19:51:15.531 [SpringContextShutdownHook] INFO  o.q.c.QuartzScheduler - [shutdown,740] - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+19:51:15.535 [SpringContextShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2032] - {dataSource-1} closing ...
+19:51:15.543 [SpringContextShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2104] - {dataSource-1} closed
+19:53:33.455 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarting,55] - Starting PandaAdminApplication using Java 11.0.19 on szl with PID 70053 (/home/shizhanli/oreottms/javaweb/CinemaBookingSystem-master/panda-admin/target/classes started by shizhanli in /home/shizhanli/oreottms/javaweb)
+19:53:33.457 [restartedMain] INFO  c.p.PandaAdminApplication - [logStartupProfileInfo,664] - The following profiles are active: druid
+19:53:33.457 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+19:53:34.054 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+19:53:34.328 [restartedMain] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1} inited
+19:53:34.645 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8181"]
+19:53:34.645 [restartedMain] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+19:53:34.646 [restartedMain] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.39]
+19:53:34.647 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - Loaded Apache Tomcat Native library [1.2.23] using APR version [1.6.5].
+19:53:34.647 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+19:53:34.647 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+19:53:34.649 [restartedMain] INFO  o.a.c.c.AprLifecycleListener - [log,173] - OpenSSL successfully initialized [OpenSSL 1.1.1f  31 Mar 2020]
+19:53:34.678 [restartedMain] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+19:53:35.169 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1220] - Using default implementation for ThreadExecutor
+19:53:35.173 [restartedMain] INFO  o.q.c.SchedulerSignalerImpl - [<init>,61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+19:53:35.173 [restartedMain] INFO  o.q.c.QuartzScheduler - [<init>,229] - Quartz Scheduler v.2.3.2 created.
+19:53:35.174 [restartedMain] INFO  o.q.s.RAMJobStore - [initialize,155] - RAMJobStore initialized.
+19:53:35.174 [restartedMain] INFO  o.q.c.QuartzScheduler - [initialize,294] - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+19:53:35.174 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1374] - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+19:53:35.174 [restartedMain] INFO  o.q.i.StdSchedulerFactory - [instantiate,1378] - Quartz scheduler version: 2.3.2
+19:53:35.175 [restartedMain] INFO  o.q.c.QuartzScheduler - [setJobFactory,2293] - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@23ba4c03
+19:53:35.218 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8181"]
+19:53:35.230 [restartedMain] INFO  o.q.c.QuartzScheduler - [start,547] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+19:53:35.238 [restartedMain] INFO  c.p.PandaAdminApplication - [logStarted,61] - Started PandaAdminApplication in 2.108 seconds (JVM running for 2.518)

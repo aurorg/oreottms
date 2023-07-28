@@ -351,6 +351,9 @@ export default {
       this.$message.success('删除角色信息成功！')
     },
     //展示分配权限对话框
+    /*它接收一个参数 `role`，表示当前需要设置权限的角色。在函数内部，首先通过发送 GET 请求获取系统资源树的数据，
+    并将其赋值给 `this.resourceList`。然后调用 `getLeafKeys` 函数，获取当前角色已经拥有的权限，将其赋值给 `this.defKeys`。
+    最后将 `setRightDialogVisible` 设为 `true`，显示设置权限的对话框。*/
     async showSetRightDialog(role) {
       this.roleId = role.roleId
       const {data: res} = await axios.get('sysResource/tree')
@@ -373,6 +376,10 @@ export default {
     setRightDialogClosed() {
       this.defKeys = []
     },
+    //提交角色的权限设置
+    /*首先通过 `this.$refs.treeRef.getCheckedKeys(true)` 获取已选中的权限节点的 key 值，
+    然后使用 axios 发送 POST 请求，将角色 ID 和权限节点 key 值以 JSON 格式传递给后端。
+    如果返回的响应码不是 200，则提示更新权限失败；否则提示更新权限成功，并重新获取角色列表，最后关闭权限设置对话框*/
     async submitRights() {
       const keys = [
           ...this.$refs.treeRef.getCheckedKeys(true)

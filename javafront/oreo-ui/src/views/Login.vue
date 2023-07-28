@@ -8,6 +8,7 @@
       <el-form class="login_form" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
         <!-- 用户名 -->
         <el-form-item prop="userName">
+          <!--双向数据绑定 输入框的值与组件内部变量绑定，实现数据的同步更新-->
           <el-input v-model="loginForm.userName" placeholder="请输入用户名" clearable
                     prefix-icon="iconfont icon-user"></el-input>
         </el-form-item>
@@ -33,7 +34,7 @@ export default {
     return {
       //登录表单数据对象
       loginForm: {
-        userName: 'admin',
+        userName: 'zouge',
         password: '123456'
       },
       //表单验证规则
@@ -57,21 +58,25 @@ export default {
       this.login()
     },
     //点击重置按钮，重置表单
+    //通过访问组件中的$refs属性来获取表单的引用，然后调用表单的resetFields()方法来将表单中的所有字段重置为初始值
     resetLoginForm(){
       console.log(this.$refs)
       this.$refs.loginFormRef.resetFields();
     },
     login() {
-      this.$refs.loginFormRef.validate(async valid => {
+      //验证合法
+      this.$refs.loginFormRef.validate(async valid => {``
         if(!valid) return;
+        //axios请求头的Content-Type为application/json，发送POST请求到sysUser/login接口，将登录表单数据以JSON格式传递
         axios.defaults.headers.post['Content-Type'] = 'application/json'
         const { data: res} = await axios.post('sysUser/login', JSON.stringify(this.loginForm));
         if(res.code !== 200) return this.$message.error(res.msg);
-        //控制登录权限
+        //控制登录权限 如果登录用户的角色没有子角色或第一个子角色为空，则提示没有权限登录
         if(res.data.sysUser.sysRole.children === null || res.data.sysUser.sysRole.children[0] === null) {
           this.$message.error("抱歉，您没有权限登录，请联系管理员获取权限")
           return
         }
+        //如果登录成功，则保存token和登录用户信息到sessionStorage中，并根据用户角色设置按钮权限
         this.$message.success("登录成功")
         // console.log(res.data);
         //保存token
@@ -103,19 +108,6 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-.avatar_box{
-  height: 130px;
-  width: 130px;
-  border: 1px solid #eee;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 0 10px #ddd;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
 }
 
 .avatar_box > img{

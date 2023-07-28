@@ -9,9 +9,11 @@
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <el-container>
+    <!--侧边栏-->
       <el-aside :width="isCollapsed ? '64px' : '250px'">
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <!--侧边栏菜单-->
+        <!-- 展开一个子菜单 -->
         <el-menu
             background-color="#333744"
             text-color="#fff"
@@ -22,6 +24,7 @@
             :router="true"
             :default-active="$route.path">
           <!--一级菜单-->
+          <!-- v-for指令用于遍历 menuList 数组，生成多个 Submenu 组件-->
           <el-submenu v-for="item in menuList"
                       :index="String(item.id)" :key="item.id">
             <!--一级菜单的模板区域-->
@@ -29,7 +32,7 @@
               <!--图标-->
               <i :class="iconList[item.id]"></i>
               <!--文本-->
-              <span>{{item.id}} &nbsp; {{item.name}}</span>
+              <span> {{item.name}}</span>
             </template>
             <!--二级菜单-->
             <el-menu-item v-for="subItem in item.children"
@@ -38,7 +41,7 @@
                 <!--图标-->
                 <i class="el-icon-menu"></i>
                 <!--文本-->
-                <span>{{subItem.id}} &nbsp; {{ subItem.name }}</span>
+                <span>{{ subItem.name }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -77,15 +80,19 @@ export default {
     this.getMenuList()
   },
   methods: {
+    //退出
     logout() {
       //清空sessionStorage
       window.sessionStorage.clear();
       this.$router.push('/login')
     },
+    //获取登录用户的菜单列表
+    //它首先从浏览器的`sessionStorage`中获取登录用户的信息，然后将该用户的角色下的菜单列表赋值给`menuList`变量
     async getMenuList(){
       const loginUser = JSON.parse(window.sessionStorage.getItem("loginUser"))
       this.menuList = loginUser.sysUser.sysRole.children
-      this.$router.push('/cinema')
+      //使用Vue Router将路由导航到/welcome页面
+      this.$router.push('/welcome')
     },
     // 菜单展开与闭合：点击事件
     toggleCollapse() {

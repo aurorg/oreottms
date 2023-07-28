@@ -24,7 +24,7 @@
       <!--类别分类列表-->
       <el-table :data="movieCategoryList" style="width: 45%" border stripe @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="movieCategoryId" label="类别编号" width="145"></el-table-column>
+        <el-table-column prop="movieCategoryId"  label="类别编号" width="145"></el-table-column>
         <el-table-column prop="movieCategoryName" label="电影类别" width="180"></el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
@@ -173,6 +173,10 @@ export default {
       })
     },
     // 显示修改对话框，回显数据
+    /*
+    它接收一个id参数，然后使用axios库向后端发送GET请求，请求地址为`sysMovieCategory/`加上id参数。
+    请求成功后，将返回的数据赋值给组件的editForm属性，最后将编辑对话框的可见性设置为true，以显示对话框。
+     */
     showEditDialog(id){
       const _this = this
       axios.get('sysMovieCategory/' + id ).then(resp => {

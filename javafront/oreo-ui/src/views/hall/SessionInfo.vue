@@ -49,7 +49,6 @@
           <el-button type="primary" @click="showAddDialog">添加场次</el-button>
         </el-col>
         <el-col :span="2">
-<!--          <el-button type="danger" @click="multipleDelete">批量删除</el-button>-->
           <el-button type="danger" @click="isAbleMultipleDelete">批量删除</el-button>
         </el-col>
       </el-row>
@@ -57,7 +56,7 @@
       <!--影厅分类列表-->
       <el-table :data="sessionList" style="width: 100%" border stripe @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="sessionId" label="#" width="40"></el-table-column>
+        <el-table-column prop="sessionId"  label="#" width="40"></el-table-column>
         <el-table-column prop="sysHall.hallName" label="影厅名称"></el-table-column>
         <el-table-column prop="sysMovie.movieName" label="电影名称"></el-table-column>
         <el-table-column prop="languageVersion" label="语言"></el-table-column>
@@ -439,6 +438,7 @@ export default {
       })
     },
     // 有订单就不能做任何修改
+    //调用axios库的get方法向后端发送请求，获取该场次相关的订单信息
     isAbleEdit(id) {
       this.checkAbleId.sessionId = id
       axios.get('sysBill', {params: this.checkAbleId}).then(response => {
@@ -449,6 +449,7 @@ export default {
         console.log(response.data.data)
         console.log(response.data.data.length)
         let bills = response.data.data
+        //如果订单数量为0，则可以编辑该场次信息；否则，弹出提示框告知有相关订单，不能修改该场次信息
         if (response.data.total === 0) {
           console.log('空的可改')
           this.showEditDialog(id)
@@ -481,10 +482,13 @@ export default {
     },
     // 修改场次信息并提交
     editSessionInfo(){
+      //计算场次的结束时间和截止时间
       this.handleEndTimeAndDeadline(this.editForm.movieId, this.editForm.sessionDate, this.editForm.playTime)
       let row = this.editForm.rowNums
       let col = this.editForm.seatNumsRow
+      //根据座位的行数和列数计算出座位总数，并将其设置为editForm对象的seatNums属性
       this.$set(this.editForm, 'seatNums', row * col)
+      //它创建一个名为seat的对象，用于表示每个座位的状态，将其设置为editForm对象的seatState属性
       let seat = {}
       for (let i = 0; i < row; i++) {
         let arr = []
@@ -494,7 +498,8 @@ export default {
         seat[isNaN(parseInt(this.editForm.rowStart)) ? String.fromCharCode(i + this.editForm.rowStart.charCodeAt(0)) : i + parseInt(this.editForm.rowStart)] = arr
       }
       this.$set(this.editForm, 'seatState', JSON.stringify(seat))
-
+      //通过调用validate方法验证表单的有效性，如果表单验证通过，则使用axios库向服务器发送PUT请求，将修改后的场次信息保存到数据库中
+      //如果保存成功，则关闭编辑对话框，并重新加载场次列表，并显示成功的提示信息
       this.$refs.editFormRef.validate(async valid => {
         const _this = this
         if (!valid) return
@@ -627,12 +632,14 @@ export default {
       this.getSessionList()
       this.$message.success('批量删除场次成功！')
     },
-    // 两层检验，第一层检验场次是否完成，完成则可删；第二层检验未完成，是否有订单，有订单不可删。不论订单支付与否
+    // 判断是否可以删除某个场次
+    //首先判断场次的截止时间是否已经过期，如果过期则直接删除该场次
     async isAbleDelete(session) {
       if (session.deadline <= moment(new Date()).format('YYYY-MM-DD HH:mm:ss')) {
         await this.deleteSessionById(session.sessionId)
         return
       }
+      //如果未过期，则通过调用axios发送请求，查询该场次是否有相关的订单信息,如果没有相关订单，则可以删除该场次信息
       this.checkAbleId.sessionId = session.sessionId
       axios.get('sysBill', {params: this.checkAbleId}).then(response => {
         console.log(response.data.total)
@@ -648,6 +655,7 @@ export default {
             billIds += temp.billId+' '
           }
           console.log('billIds is : '+billIds)
+          //如果有相关订单，则弹出提示框，告知不能删除该场次信息，并列出导致异常的订单编号
           this.$alert('抱歉！电影场次有相关订单，不能删除电影场次信息。\n'+'导致异常的订单编号为: '+billIds, '删除请求异常通知', {
             confirmButtonText: '我知道了',
             callback: action => {
@@ -694,6 +702,11 @@ export default {
         _this.movieList = resp.data.data;
       })
     },
+    /*它接受一个参数id，表示场次的ID
+      它使用axios库发送一个GET请求，请求地址为'sysSession/find/' + id
+      请求成功后，它将响应数据中的sessionSeats字段解析为JSON格式，并将结果赋值给seats属性
+      它还获取了场厅的座位行数，将其赋值给col属性
+      最后计算了一个弹出框的宽度，并将其显示出来*/
     async checkSeat(id){
       const _this = this
       await axios.get('sysSession/find/' + id).then(resp => {

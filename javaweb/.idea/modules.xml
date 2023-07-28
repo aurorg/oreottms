@@ -3,15 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/javaweb.iml" filepath="$PROJECT_DIR$/.idea/javaweb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/oreo.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/oreo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreottms/oreo-admin/oreo-admin.iml" filepath="$PROJECT_DIR$/oreottms/oreo-admin/oreo-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-common/oreo-common.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-common/oreo-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-framework/oreo-framework.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-framework/oreo-framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-system/oreo-system.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-system/oreo-system.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreottms/panda.iml" filepath="$PROJECT_DIR$/oreottms/panda.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreottms/oreo-common/panda-common.iml" filepath="$PROJECT_DIR$/oreottms/oreo-common/panda-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreottms/oreo-framework/panda-framework.iml" filepath="$PROJECT_DIR$/oreottms/oreo-framework/panda-framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreottms/oreo-system/panda-system.iml" filepath="$PROJECT_DIR$/oreottms/oreo-system/panda-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-admin/panda-admin.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-admin/panda-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-common/panda-common.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-common/panda-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-framework/panda-framework.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-framework/panda-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CinemaBookingSystem-master/panda-system/panda-system.iml" filepath="$PROJECT_DIR$/CinemaBookingSystem-master/panda-system/panda-system.iml" />
     </modules>
   </component>
 </project>
